@@ -271,7 +271,7 @@ void main()
 
             if (size == 0)
             {
-                // textToVoiceConverter("Welcome back again. You have not created account yet. Please create your account to use the app.");
+                textToVoiceConverter("Welcome back again. You have not created account yet. Please create your account to use the app.");
                 registerAccount();
             }
             else
