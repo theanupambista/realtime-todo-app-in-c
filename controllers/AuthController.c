@@ -32,46 +32,6 @@ int isValidUsername(char username[])
     fclose(userPtr);
     return 1;
 }
-void registerAccount()
-{
-    system("cls");
-    FILE *userPtr;
-    struct User user;
-    char password[20];
-    printf("\t\t\t\t=======Register your account!=======\n\n\n");
-    userPtr = fopen("username.txt", "a"); // use can give any file name. Give the name with extention or without extention.
-
-    printf("\n\t\t\tEnter First Name     : ");
-    scanf("%s", &user.first_name);
-    printf("\n\t\t\tEnter Last Name     : ");
-    scanf("%s", &user.last_name);
-    printf("\n\t\t\tEnter Username : ");
-    scanf("%s", &user.username);
-    printf("\n\t\t\tEnter Password       : ");
-    scanf("%s", &user.password);
-
-    if (userPtr == NULL)
-    {
-        fprintf(stderr, "can't open file");
-    }
-    else
-    {
-        int isValid = isValidUsername(user.username);
-        if (isValid)
-        {
-            user.id = getId();
-            fwrite(&user, sizeof(struct User), 1, userPtr);
-            printf("\t\t\tRegistered successfuly\n");
-        }
-        else
-        {
-            printf("\t\tUsername already taken.");
-        }
-    }
-    fclose(userPtr);
-    textToVoiceConverter("Account created successfully");
-}
-
 void loginAccount()
 {
     system("cls");
@@ -114,8 +74,6 @@ void loginAccount()
             {
                 is_logged_in = 1;
                 current_user = user;
-                printf("login successfully\n");
-                printf("name: %s %s\n", current_user.first_name, user.last_name);
                 dashBoard();
             }
             // else
@@ -131,4 +89,45 @@ void loginAccount()
         is_logged_in = 2;
         loginAccount();
     }
+}
+
+void registerAccount()
+{
+    system("cls");
+    FILE *userPtr;
+    struct User user;
+    char password[20];
+    printf("\t\t\t\t=======Register your account!=======\n\n\n");
+    userPtr = fopen("username.txt", "a"); // use can give any file name. Give the name with extention or without extention.
+
+    printf("\n\t\t\tEnter First Name     : ");
+    scanf("%s", &user.first_name);
+    printf("\n\t\t\tEnter Last Name     : ");
+    scanf("%s", &user.last_name);
+    printf("\n\t\t\tEnter Username : ");
+    scanf("%s", &user.username);
+    printf("\n\t\t\tEnter Password       : ");
+    scanf("%s", &user.password);
+
+    if (userPtr == NULL)
+    {
+        fprintf(stderr, "can't open file");
+    }
+    else
+    {
+        int isValid = isValidUsername(user.username);
+        if (isValid)
+        {
+            user.id = getId();
+            fwrite(&user, sizeof(struct User), 1, userPtr);
+            printf("\t\t\tRegistered successfuly\n");
+            textToVoiceConverter("Account created successfully");
+            // loginAccount();
+        }
+        else
+        {
+            printf("\t\tUsername already taken.");
+        }
+    }
+    fclose(userPtr);
 }

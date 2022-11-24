@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 // custom includes
 #include "./modals/user.c"
@@ -15,6 +16,7 @@
 
 void main()
 {
+    SetConsoleTitle("TODO LIST MANAGEMENT SYSTEM");
     int isFirstTime;
     FILE *fp;
     if (access("username.txt", F_OK) == 0)
@@ -37,7 +39,7 @@ void main()
                 while (choice != 3)
                 {
                     printf("\t\t\t=====TODO LIST MANAGEMENT SYSTEM=====");
-                    printf("\n\n\n\t\t\t\t     1. Register\n");
+                    printf("\n\n\n\t\t\t\t     1. Register Account\n");
                     printf("\t\t\t\t     2. Login\n");
                     printf("\t\t\t\t     3. Exit\n");
                     printf("\t\t\t\t    _____________________\n");
@@ -57,7 +59,6 @@ void main()
                         break;
                     }
                 }
-                // loginAccount();
             }
         }
         else

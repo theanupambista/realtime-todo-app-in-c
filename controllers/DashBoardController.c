@@ -13,8 +13,8 @@ void dashBoard()
             printf("\t\t\t=====TODO LIST MANAGEMENT SYSTEM=====");
             printf("\n\n\n\t\t\t\t     1. Add Task\n");
             printf("\t\t\t\t     2. All Task\n");
-            printf("\t\t\t\t     3. Search Task\n");
-            printf("\t\t\t\t     4. Delete Task\n");
+            printf("\t\t\t\t     3. Search Task(in process)\n");
+            printf("\t\t\t\t     4. Delete Task(in process)\n");
             printf("\t\t\t\t     5. Exit\n");
             printf("\t\t\t\t    _____________________\n");
             printf("\t\t\t\t     ");
@@ -32,6 +32,10 @@ void dashBoard()
                 system("cls");
                 break;
             }
+        }
+        if (choice == 5)
+        {
+            exit(0);
         }
     }
 }
